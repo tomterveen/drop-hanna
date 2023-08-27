@@ -4,13 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Drop Hanna</title>
+    <title>Dropping Hanna</title>
 </head>
 <body>
-    <h1>Drop hanna</h1>
-    <form>
-        <label for="vraag1">Vraag 1</label><br>
-        <input type="text" id="vraag1" label="vraag1">
-    </form>
+    <header>
+        <h1>Dropping Hanna</h1>
+    </header>
+    <main>
+        <p>Hier komt uitleg over de opdracht</p>
+        <label for="antwoord1">Vraag 1</label><br>
+        <input type="text" id="antwoord1" label="antwoord1">
+        <button id="check">Check</button>
+        <p id="uitslag" hidden>Goed! Je mag door naar de volgende opdracht.</p>
+    </main>
+
+<script>
+
+    const antwoord1 = document.getElementById("antwoord1");
+    const btnCheck = document.getElementById("check");
+    const uitslag = document.getElementById("uitslag");
+
+    const checkAntwoord = () => {
+        if (antwoord1.value === "Hallo") {
+            uitslag.innerHTML = "Goed! Ga door naar de volgende ronde";
+            uitslag.hidden = false;
+            btnCheck.disabled = true;
+
+            let btnVolgende = document.createElement("a");
+            btnVolgende.innerHTML = "Volgende opdracht";
+            btnVolgende.id = "btnVolgende";
+            btnVolgende.href = "/opdracht2.html";
+            document.body.appendChild(btnVolgende);
+
+        } else {
+            uitslag.innerHTML = "Fout! Probeer het nog eens";
+            uitslag.hidden = false;
+        }
+    };
+
+    btnCheck.onclick = checkAntwoord;
+
+</script>
 </body>
 </html>
